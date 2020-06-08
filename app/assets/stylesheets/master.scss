@@ -1,6 +1,30 @@
 @import "bootstrap";
 
+/* COLOR SCHEMES
+    Aqua - #25CED1
+    Orange - #FF8a5B
+    BG: Creme - #F4F4F4
+
+    SUPPORT: Aqua - 5BD3C7
+    MAIN: Navy - 353755
+    BG: Gray - E0E4EE
+*/
+
+body {
+    background-color: #E0E4EE;
+}
+
+.navbar {
+    font-family: "Helvetica Neue", Helvetica;
+    font-weight: 300;
+    box-shadow: 0px 1px 3px #2a2a2a;
+    background-color: #353755;
+    color: white;
+}
+
 .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
+    font-family:"Helvetica Neue", Helvetica;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
 }
