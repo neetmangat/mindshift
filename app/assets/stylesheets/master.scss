@@ -10,8 +10,49 @@
     BG: Gray - E0E4EE
 */
 
+h1, h2, h3, h4, h5, h6 {
+    margin: 0
+}
+
 body {
-    background-color: #E0E4EE;
+    background-color: #E0E4EE
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.frosty {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.frosty h1 {
+    font-family: "Helvetica Nueue", Helvetica;
+    font-weight: 100;
+    text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
+}
+
+.frosty h2 {
+    font-family: "Helvetica Nueue", Helvetica;
+    font-weight: 200;
+    text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
+}
+
+.hero {
+    background: image_url('hero.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 370px;
+    box-shadow: 0px 3px 8px #2a2a2a;
+}
+
+.mainbtn {
+    color: #353755;
+    background-color: #5BD3C7;
+    outline-color: #353755;
 }
 
 .navbar {
@@ -20,11 +61,13 @@ body {
     box-shadow: 0px 1px 3px #2a2a2a;
     background-color: #353755;
     color: white;
+    margin: 0;
+    font-weight: 200;
 }
 
 .navbar-brand {
     font-family:"Helvetica Neue", Helvetica;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     color: white;
 }
