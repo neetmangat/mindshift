@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flixter</title>
+    <title>MiNDSHiFT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="MiNDSHiFT">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,30 +17,37 @@
 
   <body>
 
-    <nav class="navbar navbar-toggleable-md navbar-inverse">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <%= link_to 'MiNDSHiFT', root_path, class: 'navbar-brand' %>
+    <div class="container-wide">
+      <nav class="navbar navbar-toggleable-md navbar-inverse" role="navigtion">
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <%= link_to 'MiNDSHiFT', root_path, class: 'navbar-brand' %>
+
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          
+          <ul class="navbar-nav">
+                <% if user_signed_in? %>
+                  <li class="nav-item">
+                    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+                  </li>
+                <% end %>
+          </ul>
+
+        </div>
+
+      </nav>
+    </div>
 
     <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>
