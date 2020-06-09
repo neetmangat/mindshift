@@ -91,13 +91,6 @@ body {
     box-shadow: 0px 3px 8px #2a2a2a;
 }
 
-.invalid-feedback {
-    color: #ff333;
-    background-color: #FFEEEE;
-    border-radius: 3px;
-    padding: 2px 8px;
-}
-
 .mainbtn {
     color: #353755;
     background-color: #5BD3C7;
@@ -105,18 +98,20 @@ body {
 }
 
 .navbar {
-    font-family: "Helvetica Neue", Helvetica;
-    font-weight: 300;
     box-shadow: 0px 1px 3px #2a2a2a;
     background-color: #353755;
-    color: white;
     margin: 0;
+}
+
+.navbar-nav  {
     font-weight: 200;
+    font-family: "Helvetica Neue", Helvetica;
+    color: white;
 }
 
 .navbar-brand {
     font-family:"Helvetica Neue", Helvetica;
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 100;
     color: white;
 }
