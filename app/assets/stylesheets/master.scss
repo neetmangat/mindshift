@@ -33,9 +33,10 @@ body {
     padding: 20px;
 }
 
-.booyah-box h2 {
+.booyah-box h2, .booyah-box h1 {
+    margin: 10px;
     color: #5BD3C7;
-}
+  }
 
 .btn {
     // border-radius: 0;
