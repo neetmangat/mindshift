@@ -6,20 +6,24 @@
     </div>
     <br>
 
-    <div class="text-center">
-        <%= link_to 'Preview As Student', course_path(current_course), class: 'btn btn-warning' %>
-    </div>
-    <br class="clear">
+    <div class="row">
+        <div class="col-12 col-md-4 offset-md-2 text-center">
+            <%= link_to 'Preview As Student', course_path(current_course), class: 'btn btn-warning' %>
+            <br><br>
+        </div>
 
-    <div class="text-center">
-        <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-info btn-lg' %>    
+        <br class="clear">
+
+        <div class="col-12 col-md-4 text-center">
+            <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-info' %>    
+        </div>
     </div>
+
     <br>
     <br>
 
-    <ul>
+    <div class="col-12 col-lg-8 offset-lg-2">
         <% current_course.sections.each do |section| %>
-            <li>
                 <%= section.title %>
                 <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-info btn-sm'%>
                 <br>
@@ -33,8 +37,7 @@
                     <% end %>
                 </ul>
                 <br class="clear">
-            </li>
         <% end %>
-    </ul>
+    </div>
 
 </div>
