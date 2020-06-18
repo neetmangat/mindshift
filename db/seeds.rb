@@ -1,12 +1,12 @@
 User.create!([
-  {id: 1, email: "test@test.com", password: "password", reset_password_token: "0bda2b5099a3a8701903dc07dc3c168317e0d46270a5a10f752bbed6b70709a8", reset_password_sent_at: "2020-06-09 01:12:24", remember_created_at: nil},
+  {id: 1, email: "test@test.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
   {id: 2, email: "neetmangat@gmail.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
 ])
 
 Course.create!([
-  {id: 12, title: "How to Code Trading Bots", description: "Learn how to code bots that will trade stocks, crypto, and forex for you based on strategies you come up with!", cost: "149.0", user_id: 2, image: "coding.jpg"},
-  {id: 13, title: "Finance 101", description: "Learn about finance, investing, and retire early.", cost: "99.0", user_id: 1, image: "finance.jpg"},
-  {id: 14, title: "Introduction to Options", description: "Options trading is a powerful way to limit risk while amplifying rewards. This course teaches you the basics of options terminology and explores various strategies used by professionals. No prior experience is needed.", cost: "149.0", user_id: 1, image: "stock_options_svu3hu.jpeg"}
+  {id: 12, title: "How to Code Trading Bots", description: "Learn how to code bots that will trade stocks, crypto, and forex for you based on strategies you come up with!", cost: "149.0", user_id: 2},
+  {id: 13, title: "Finance 101", description: "Learn about finance, investing, and retire early.", cost: "99.0", user_id: 1},
+  {id: 14, title: "Introduction to Options", description: "Options trading is a powerful way to limit risk while amplifying rewards. This course teaches you the basics of options terminology and explores various strategies used by professionals. No prior experience is needed.", cost: "149.0", user_id: 1}
 ])
 
 Section.create!([
