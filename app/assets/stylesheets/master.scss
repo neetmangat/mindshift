@@ -36,7 +36,7 @@ body {
 .booyah-box h2, .booyah-box h1 {
     margin: 10px;
     color: #5BD3C7;
-  }
+}
 
 .btn {
     // border-radius: 0;
@@ -44,7 +44,13 @@ body {
 
 .badge-info {
     background-color: #5BD3C7;
-    padding: 15px;
+    padding: 10px;
+    margin: 0px 0px 10px 0px;
+}
+
+.badge-default {
+    font-size: 15px;
+    padding: 10px;
 }
 
 .btn-info {
