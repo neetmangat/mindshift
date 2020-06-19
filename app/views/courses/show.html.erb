@@ -14,13 +14,22 @@
                 </span>
 
                 <% if current_user && current_user == @course.user %>
-                    <br>
-                    <br>
+                    <br />
+                    <br />
                     <%= link_to 'Administer', instructor_course_path(@course), class: 'btn btn-info' %>
+                <% else %>
+                    <br />
+                    <br />
+                    <% if current_user && current_user.enrolled_in?(@course) %>
+                        <h4><span class="badge badge-info">You Are Enrolled!</span></h4>
+                    <% else %>
+                        <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-info', method: :post %>
+                    <% end %>
                 <% end %>
+
             </div>
 
-            <div class="col-sm-9 col-12">
+            <div class="col-sm-9 col-12 description">
                 <%= @course.description %>
             </div>
         </div>
@@ -41,7 +50,7 @@
                                 <br />
                                 <%= link_to lesson_path(lesson) do %>
                                     <b><%= lesson.title %></b>
-                                    <br />
+                                    <hr class="hr-white" />
                                     <%= lesson.subtitle %>
                                 <% end %>
                             </div>
