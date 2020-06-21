@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :enrollments, only: :create
   end
 
-  resources :lessons, only: [:show]
+  resources :lessons, only: [:show, :edit]
 
   namespace :instructor do
     resources :sections, only: [] do

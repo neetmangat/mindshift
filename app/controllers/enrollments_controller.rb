@@ -14,7 +14,7 @@ class EnrollmentsController < ApplicationController
             charge = Stripe::Charge.create(
             customer: customer.id,
             amount: @amount,
-            description: "MiNDSHiFT #{current_course.title}",
+            description: "MiNDSHiFT Course",
             currency: 'usd'
             )
         end
