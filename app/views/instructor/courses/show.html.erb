@@ -1,3 +1,18 @@
+<script>
+  $(function() {
+    $('.lessons').sortable({
+        update: function( event, ui ) {
+        $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { lesson: { row_order_position: ui.item.index() } }
+        });
+      }
+    });
+  });
+</script>
+
 <br />
 <div class="booyah-box col-10 offset-1">
     <h1 class="text-center"><%= current_course.title %></h1>
@@ -27,52 +42,15 @@
         <br />
         <hr />
         <br />
-
-
-            <div class="text-center">
-                <!--%= link_to 'Edit course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %-->
-                <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-warning btn-lg' %>
-            </div>
-
-    </div>
-
-
-    <!--div class="row">
-        <div class="col-12 col-md-4 offset-md-2 text-center">
-            <%= link_to 'Preview As Student', course_path(current_course), class: 'btn btn-warning' %>
-            <br><br>
-        </div>
-
-        <br class="clear">
-
-        <div class="col-12 col-md-4 text-center">
-            <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-info' %>    
+        <div class="text-center">
+            <!--%= link_to 'Edit course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %-->
+            <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-warning btn-lg' %>
         </div>
     </div>
-
-    <br>
-
-    <div class="col-12 col-lg-8 offset-lg-2">
-        <% current_course.sections.each do |section| %>
-                <%= section.title %>
-                <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-info btn-sm'%>
-                <br>
-                <ul>
-                    <% section.lessons.each do |lesson| %>
-                        <li>
-                            <b><%= lesson.title %></b>
-                            -
-                            <%= lesson.subtitle %>
-                        </li>
-                    <% end %>
-                </ul>
-                <br class="clear">
-        <% end %>
-    </div-->
 
     <div class="col-12 col-lg-10 offset-lg-1">
         <% current_course.sections.each do |section| %>
-            <br /><br />
+            <br />
 
             <div class="section">
                 <div class="row">
@@ -80,23 +58,22 @@
                     <%= link_to 'Add a new lesson...', new_instructor_section_lesson_path(section), class: 'btn btn-warning col-8 offset-2 col-md-4 offset-md-3 col-lg-3 offset-lg-2'%>
                 </div>
                 
-                <div class="row">
+                <div class="row lessons">
                     <% section.lessons.rank(:row_order).each do |lesson| %>
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-md-6" data-update-url="<%= instructor_lesson_path(lesson) %>">
                             <div class="lesson text-center">
                                 <%= link_to lesson_path(lesson) do %>
-                                    <b><%= lesson.title %></b>
-                                    <hr class="hr-white" />
-                                    <%= lesson.subtitle %>
+                                        <b><%= lesson.title %></b>
+                                        <hr class="hr-white" />
+                                        <%= lesson.subtitle %>
                                 <% end %>
                             </div>
                         </div>
                     <% end %>
                 </div>
-
             </div>
             <br class="clear" />
         <% end %>
     </div>
-
 </div>
+
