@@ -67,11 +67,10 @@
         <br />
         <hr />
     </div>
-
+    <br />
 
     <div class="col-12 col-lg-10 offset-lg-1">
-        <% @course.sections.each do |section| %>
-            <br /><br />
+        <% @course.sections.rank(:row_order).each do |section| %>
             <div class="section">
                 <h3><%= section.title %></h3>
                 <div class="row">
@@ -88,7 +87,6 @@
                     <% end %>
                 </div>
             </div>
-            <br class="clear" />
         <% end %>
     </div>
 </div>

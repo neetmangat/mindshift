@@ -90,6 +90,29 @@ button.stripe-button-el>span {
     margin: 10px 0px;
 }
 
+.dots-white:after {
+    content: '\2807';
+    font-size: 40px;
+    color: white;
+    margin-top: -17px;
+//    margin-left: 10px;
+    float: left;
+}
+
+.dots-purple:after {
+    content: '\2807';
+    font-size: 40px;
+    color: #353755;
+    margin-top: -17px;
+    float: left;
+}
+
+.dots-white:hover, .dots-purple:hover {
+    cursor: move;
+    cursor: -moz-move;
+    cursor: -webkit-move;
+}
+
 .otherlinks {
     color: black;
     font-family: "Helvetica Nueue", Helvetica;
@@ -201,10 +224,10 @@ button.stripe-button-el>span {
     border: 1px solid;
     border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
     padding: 20px;
+    margin-bottom: 30px;
 }
 
 .section h3 {
     margin: 0px 0px 10px 0px;
     color: #353755;
 }
-

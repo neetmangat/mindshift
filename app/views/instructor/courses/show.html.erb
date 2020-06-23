@@ -1,4 +1,4 @@
-<script>
+<script id="#ArrangeLessons">
   $(function() {
     $('.lessons').sortable({
         update: function( event, ui ) {
@@ -11,6 +11,20 @@
       }
     });
   });
+</script>
+<script id="#ArrangeSections">
+    $(function() {
+        $('.sections').sortable({
+            update: function( event, ui ) {
+                $.ajax({
+                    type: 'PUT',
+                    url: ui.item.data('update-url'),
+                    dataType: 'json',
+                    data: { section: {row_order_position: ui.item.index() } }
+                });
+            }
+        });
+    });
 </script>
 
 <br />
@@ -41,39 +55,42 @@
         </div>
         <br />
         <hr />
-        <br />
-        <div class="text-center">
-            <!--%= link_to 'Edit course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %-->
-            <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-warning btn-lg' %>
-        </div>
     </div>
 
-    <div class="col-12 col-lg-10 offset-lg-1">
-        <% current_course.sections.each do |section| %>
-            <br />
+    <div class="text-center">
+        <!--%= link_to 'Edit course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %-->
+        <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-warning btn-lg' %>
+    </div>
+    <br />
 
-            <div class="section">
-                <div class="row">
-                    <h3 class="col-12 col-md-4 col-lg-6"><%= section.title %></h3>
-                    <%= link_to 'Add a new lesson...', new_instructor_section_lesson_path(section), class: 'btn btn-warning col-8 offset-2 col-md-4 offset-md-3 col-lg-3 offset-lg-2'%>
-                </div>
-                
-                <div class="row lessons">
-                    <% section.lessons.rank(:row_order).each do |lesson| %>
-                        <div class="col-12 col-md-6" data-update-url="<%= instructor_lesson_path(lesson) %>">
-                            <div class="lesson text-center">
-                                <%= link_to lesson_path(lesson) do %>
-                                        <b><%= lesson.title %></b>
-                                        <hr class="hr-white" />
-                                        <%= lesson.subtitle %>
-                                <% end %>
+    <div class="col-12 col-lg-10 offset-lg-1">
+        <div class="sections">
+            <% current_course.sections.rank(:row_order).each do |section| %>
+                <div class="section" data-update-url="<%= instructor_section_path(section) %>">
+                    <div class="row">
+                    <div class="dots-purple"></div>
+                        <h3 class="col-11 col-md-4 col-lg-6"><%= section.title %></h3>
+                        <%= link_to 'Add a new lesson...', new_instructor_section_lesson_path(section), class: 'btn btn-warning col-8 offset-2 col-md-4 offset-md-3 col-lg-3 offset-lg-2'%>
+                    </div>
+                    
+                    <div class="row lessons">
+                        <% section.lessons.rank(:row_order).each do |lesson| %>
+                            <div class="col-12 col-md-6" data-update-url="<%= instructor_lesson_path(lesson) %>">
+                                <div class="lesson text-center">
+                                    <div class="dots-white"></div>
+                                    <%= link_to lesson_path(lesson) do %>
+                                            <b><%= lesson.title %></b>
+                                            <hr class="hr-white" />
+                                            <%= lesson.subtitle %>
+                                    <% end %>
+                                </div>
                             </div>
-                        </div>
-                    <% end %>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
-            <br class="clear" />
-        <% end %>
+                <span class="clear"></span>
+            <% end %>
+        </div>
     </div>
 </div>
 
