@@ -39,6 +39,9 @@
             <ul class="navbar-nav">
               <% if user_signed_in? %>
                 <li class="nav-item">
+                  <%= link_to 'My Dashboard', dashboard_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
                   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
                 </li>
               <% else %>
@@ -71,6 +74,8 @@
         <b>Teachers</b>
         <br />
         <%= link_to 'Teach a Course', new_instructor_course_path %>
+        <br />
+        <%= link_to 'View Dashboard', dashboard_path %>
       </div>
     </div>
 
