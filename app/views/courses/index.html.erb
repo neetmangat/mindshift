@@ -12,7 +12,9 @@
                         <h2 class="text-center">
                             <%= course.title %>
                         </h2>
-                        <%= image_tag course.image_url, class: 'img-fluid rounded mx-auto d-block imgdrop' %>
+                        <% if course.image_url %>
+                            <%= image_tag course.image_url, class: 'img-fluid rounded mx-auto d-block imgdrop' %>
+                        <% end %>
                     <% end %>
 
                     <br />
