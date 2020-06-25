@@ -27,6 +27,15 @@ class Instructor::LessonsController < ApplicationController
         end
     end
 
+    def destroy
+        if current_lesson.section.course.user != current_user
+            return render plain: 'Not Allowed', status: :forbidden
+        end
+
+        current_lesson.destroy
+        redirect_to instructor_course_path(current_lesson.section.course)
+    end
+
     private
 
     def current_lesson
