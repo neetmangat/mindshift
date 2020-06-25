@@ -19,19 +19,19 @@
 
   
   <div class="row text-center">
-    <div class="col-6 float-left">
+    <div class="col-5">
     <% if current_lesson.previous_lesson.present? %>
         <%= link_to lesson_path(current_lesson.previous_lesson), class: 'btn btn-info' do %>
         <span class="fa fa-backward"></span> &nbsp;
-        Previous Lesson
+        Previous
         <% end %>
     <% end %>
     </div>
 
-    <div class="col-6 float-right">
+    <div class="col-5 offset-2">
     <% if current_lesson.next_lesson.present? %>
         <%= link_to lesson_path(current_lesson.next_lesson), class: 'btn btn-info' do %>
-          Next Lesson &nbsp;
+          Next &nbsp;
           <span class="fa fa-forward"></span>
         <% end %>
     <% end %>

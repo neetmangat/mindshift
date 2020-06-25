@@ -83,8 +83,16 @@ button.stripe-button-el>span {
     border: 10px solid red;
 }
 
+.categories {
+    margin-top: 30px;
+}
+
 .clear {
     clear: both;
+}
+
+.courselink a:link {
+    text-decoration: none;
 }
 
 .dashboard h3 {
@@ -138,6 +146,11 @@ button.stripe-button-el>span {
     background: rgba(0, 0, 0, 0.5);
     color: white;
     font-family: "Helvetica Nueue", Helvetica;
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .frosty h1 {
@@ -177,6 +190,10 @@ button.stripe-button-el>span {
     border-color: white;
     margin: 2px auto;
     width: 60%;
+}
+
+.imagefront {
+    max-height: 300px;
 }
 
 .lesson {
@@ -232,7 +249,7 @@ button.stripe-button-el>span {
     color: white;
 }
 
-.privacy h1, h2, h3, h4, h5, h6 {
+.privacy h1, .privacy h2, .privacy h3 {
     color: #5BD3C7;
 }
 
@@ -249,3 +266,4 @@ button.stripe-button-el>span {
     margin: 0px 0px 10px 0px;
     color: #353755;
 }
+

@@ -7,7 +7,7 @@
 
         <div class="row">    
             <% @courses.each do |course| %>
-                <div class="col-12 col-xl-6">
+                <div class="col-12 col-xl-6 courselink">
                     <%= link_to course_path(course) do %>
                         <h2 class="text-center">
                             <%= course.title %>
