@@ -1,6 +1,6 @@
 class Instructor::CoursesController < ApplicationController
     before_action :authenticate_user!
-    before_action :require_authorized_for_current_course, only: [:show, :edit, :update]
+    before_action :require_authorized_for_current_course, only: [:show, :edit, :update, :destroy]
     
     def new
         @course = Course.new
@@ -31,6 +31,12 @@ class Instructor::CoursesController < ApplicationController
         else
             render :edit, status: :unprocessable_entity
         end
+    end
+
+    def destroy
+        current_course.sections.each {|s| s.destroy }
+        current_course.destroy
+        redirect_to root_path
     end
 
     private

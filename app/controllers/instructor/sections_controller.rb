@@ -1,6 +1,6 @@
 class Instructor::SectionsController < ApplicationController
     before_action :authenticate_user!
-    before_action :require_authorized_for_current_course, only: [:create]
+    before_action :require_authorized_for_current_course, only: [:create, :destroy, :edit]
     before_action :require_authorized_for_current_section, only: [:update]
 
     def create
@@ -12,13 +12,19 @@ class Instructor::SectionsController < ApplicationController
     end
 
     def update
+        current_section.update_attributes(section_params)
+
         if current_section.valid?
             redirect_to instructor_course_path(current_course)
         else
             render :edit, status: :unprocessable_entity
         end
+    end
 
-        current_section.update_attributes(section_params)
+    def destroy
+        current_section.lessons.each {|n| n.destroy }
+        current_section.destroy
+        redirect_to instructor_course_path(current_course)
     end
 
     private
