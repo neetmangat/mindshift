@@ -20,6 +20,26 @@ class Instructor::CoursesController < ApplicationController
         @lesson = Lesson.new
     end
 
+    def edit
+        if current_course.user != current_user
+            return render plain: 'Not Allowed', status: :forbidden
+        end
+    end
+
+    def update
+        if current_course.user != current_user
+            return render plain: 'Now Allowed', status: :forbidden
+        end
+
+        current_course.update_attributes(course_params)
+        
+        if current_course.valid?
+            redirect_to instructor_course_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def require_authorized_for_current_course

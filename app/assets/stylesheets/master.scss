@@ -39,8 +39,9 @@ body {
     color: #5BD3C7;
 }
 
-.btn {
+.btn:hover {
     // border-radius: 0;
+    cursor: pointer;
 }
 
 .badge-info {
@@ -52,6 +53,8 @@ body {
 .badge-default {
     font-size: 15px;
     padding: 10px;
+    background-color: #353755;
+    color: #E0E4EE;
 }
 
 .btn-info {
@@ -100,7 +103,7 @@ button.stripe-button-el>span {
 }
 
 .description {
-    margin: 10px 0px;
+    margin-top: 10px;
 }
 
 .dots-white:after {

@@ -43,6 +43,9 @@
 
 
   <div class="col-12 text-center">
+    <% if current_user && current_lesson.section.course.user = current_user %>
+      <%= link_to 'Edit Lesson', edit_instructor_section_lesson_path(current_lesson.section), class: 'btn btn-warning' %>
+    <% end %>
     <%= link_to 'Back to Course', course_path(current_lesson.section.course), class: 'btn btn-info' %>
   </div>
 </div>

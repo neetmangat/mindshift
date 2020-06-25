@@ -9,9 +9,22 @@ class Instructor::LessonsController < ApplicationController
         redirect_to instructor_course_path(current_section.course)
     end
 
+    def edit
+        @lesson = current_section.lessons.find(params[:id])
+    end
+
     def update
+        if current_lesson.section.course.user != current_user
+            return render plain: "Not Allowed", status: :unauthorized
+        end
+        
         current_lesson.update_attributes(lesson_params)
-        render plain: 'Updated!'
+        
+        if current_lesson.valid?
+            redirect_to lesson_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
     end
 
     private

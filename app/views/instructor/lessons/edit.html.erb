@@ -1,0 +1,13 @@
+<br />
+<div class="booyah-box col-10 offset-1">
+    <h1 class="text-center">Edit Lesson</h1>
+    <br />
+
+    <%= simple_form_for @lesson, url: instructor_lesson_path, method: :patch do |f| %>
+        <%= f.input :title, label: 'Lesson Title' %>
+        <%= f.input :subtitle, label: 'Lesson Subtitle' %>
+        <%= f.input :video %>
+        <%= f.submit 'Update', class: 'btn btn-info' %>
+    <% end %>
+    <br />
+</div>
