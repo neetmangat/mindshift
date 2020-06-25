@@ -1,6 +1,6 @@
 class Instructor::CoursesController < ApplicationController
     before_action :authenticate_user!
-    before_action :require_authorized_for_current_course, only: [:show]
+    before_action :require_authorized_for_current_course, only: [:show, :edit, :update]
     
     def new
         @course = Course.new
@@ -21,16 +21,9 @@ class Instructor::CoursesController < ApplicationController
     end
 
     def edit
-        if current_course.user != current_user
-            return render plain: 'Not Allowed', status: :forbidden
-        end
     end
 
     def update
-        if current_course.user != current_user
-            return render plain: 'Now Allowed', status: :forbidden
-        end
-
         current_course.update_attributes(course_params)
         
         if current_course.valid?
@@ -44,7 +37,7 @@ class Instructor::CoursesController < ApplicationController
 
     def require_authorized_for_current_course
         if current_course.user != current_user
-            render plain: "Unauthorized", status: :unauthorized
+            return render plain: "Unauthorized", status: :unauthorized
         end
     end
     

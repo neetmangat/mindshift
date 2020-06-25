@@ -1,7 +1,7 @@
 class Instructor::LessonsController < ApplicationController
     before_action :authenticate_user!
     before_action :require_authorized_for_current_section, only: [:create]
-    before_action :require_authorized_for_current_lesson, only: [:update]
+    before_action :require_authorized_for_current_lesson, only: [:update, :edit, :destroy]
     protect_from_forgery with: :null_session
 
     def create
@@ -14,10 +14,6 @@ class Instructor::LessonsController < ApplicationController
     end
 
     def update
-        if current_lesson.section.course.user != current_user
-            return render plain: "Not Allowed", status: :unauthorized
-        end
-        
         current_lesson.update_attributes(lesson_params)
         
         if current_lesson.valid?
@@ -28,10 +24,6 @@ class Instructor::LessonsController < ApplicationController
     end
 
     def destroy
-        if current_lesson.section.course.user != current_user
-            return render plain: 'Not Allowed', status: :forbidden
-        end
-
         current_lesson.destroy
         redirect_to instructor_course_path(current_lesson.section.course)
     end

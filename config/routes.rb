@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   namespace :instructor do
     resources :lessons, only: [:update]
-    resources :sections, only: [:update] do
+    resources :sections, only: [:update, :edit] do
         resources :lessons, only: [:create, :edit, :destroy]
     end
     resources :courses, only: [:new, :create, :show, :edit, :update] do

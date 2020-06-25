@@ -43,12 +43,12 @@
 
 
   <div class="col-12 text-center">
-    <% if current_user && current_lesson.section.course.user = current_user %>
+    <% if current_user == current_lesson.section.course.user %>
       <%= link_to 'Edit Lesson', edit_instructor_section_lesson_path(current_lesson.section), class: 'btn btn-warning' %>
       <%= link_to 'Delete Lesson', instructor_section_lesson_path(current_lesson.section), method: :delete, data: {confirm: "Are you sure you want to delete this lesson?"}, class: 'btn btn-danger' %>
+      <br />
+      <br />
     <% end %>
-    <br />
-    <br />
     <%= link_to 'Back to Course', course_path(current_lesson.section.course), class: 'btn btn-info' %>
   </div>
 </div>

@@ -8,13 +8,22 @@ class Instructor::SectionsController < ApplicationController
         redirect_to instructor_course_path(current_course)
     end
 
+    def edit
+    end
+
     def update
+        if current_section.valid?
+            redirect_to instructor_course_path(current_course)
+        else
+            render :edit, status: :unprocessable_entity
+        end
+
         current_section.update_attributes(section_params)
-        render plain: 'Updated!'
     end
 
     private
 
+    helper_method :current_section
     def current_section
         @current_section ||= Section.find(params[:id])
     end
