@@ -34,7 +34,12 @@ class Instructor::CoursesController < ApplicationController
     end
 
     def destroy
-        current_course.sections.each {|s| s.destroy }
+        current_course.sections.each { |s|
+            s.lessons.each { |l| 
+                l.destroy
+                }
+            s.destroy 
+        }
         current_course.destroy
         redirect_to root_path
     end
