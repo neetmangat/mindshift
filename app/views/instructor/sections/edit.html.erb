@@ -3,7 +3,7 @@
     <h1 class="text-center">Edit Section</h1>
     <br />
 
-    <%= simple_form_for current_section, url: instructor_course_section_path, method: :patch do |f| %>
+    <%= simple_form_for current_section, url: instructor_section_path, method: :patch do |f| %>
         <%= f.input :title %>
         <%= f.submit 'Update', class: 'btn btn-info' %>
     <% end %>

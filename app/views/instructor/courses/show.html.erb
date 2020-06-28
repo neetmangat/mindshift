@@ -1,15 +1,8 @@
 <!-- Scripts -->
     <script>
         $(function() {
-            $('.edit-section-button').click(function() {
-                var sectionUrl = $(event.target).data('section-url');
-                console.log(sectionUrl)
-                $('#editSectionForm').attr('action', sectionUrl);
-            });
-
             $('.new-lesson-button').click(function() {
                 var lessonUrl = $(event.target).data('lesson-url');
-                console.log(lessonUrl)
                 $('#newLessonForm').attr('action', lessonUrl);
             });
         
@@ -80,7 +73,7 @@
 
 <!-- Admin Buttons -->
     <div class="text-center">
-        <%= link_to 'Edit course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %>
+        <%= link_to 'Edit Course', edit_instructor_course_path(current_course), class: 'btn btn-warning btn-lg' %>
         <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#newSectionModal">
             Add Section
         </button>
@@ -92,7 +85,7 @@
     <div class="col-12 col-lg-10 offset-lg-1">
         <div class="sections">
             <% current_course.sections.rank(:row_order).each do |section| %>
-                <div class="section" data-update-url="<%= instructor_section_path(section) %>">
+                <div class="section" %>
                     <div class="row">
                     <div class="dots-purple"></div>
                         <h3 class="col-11 col-md-4 col-lg-6">
@@ -123,17 +116,8 @@
                     </div>
 
                     <div class="text-center">
-                        <br />
-                        <!--button type="button"
-                            class="btn btn-warning edit-section-button"
-                            data-toggle="modal"
-                            data-target="#editSectionModal"
-                            data-section-url="<%= instructor_course_section_path(section, course_id: current_course) %>">
-                                Edit Section
-                        </button-->
-
-                        <%= link_to 'Old Edit', 
-                            edit_instructor_course_section_path(section, course_id: current_course), 
+                        <%= link_to 'Edit Section', 
+                            edit_instructor_section_path(section), 
                             class: 'btn btn-warning' %>
                         <%= link_to 'Delete Section', 
                             instructor_section_path(section), 
@@ -181,31 +165,6 @@
     </div>
     </div>
 <!-- Add Section Modal -->
-
-<!-- Edit Section Modal -->
-    <div class="modal fade" id="editSectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-                </button>
-                <h3 class="modal-title" id="newSectionModalLabel">Edit Section</h3>
-            </div>
-            <%= simple_form_for current_course, url: '#', html: {id: 'editSectionForm' } do |f| %>
-                <div class="modal-body form">
-                    <br>
-                    <%= f.input :title, label: 'Section Title' %>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <%= f.submit "Update", class: 'btn btn-info' %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-    </div>
-<!-- Edit Section Modal -->
 
 <!-- Add Lesson Modal -->
     <div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

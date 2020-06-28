@@ -18,7 +18,6 @@ class Instructor::CoursesController < ApplicationController
     def show
         @section = Section.new
         @lesson = Lesson.new
-        @current_section = current_course.sections
     end
 
     def edit
